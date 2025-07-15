@@ -10,6 +10,7 @@ const mongoose = require("./config/db")
 // Set the port configurations
 const port = process.env.PORT ? process.env.PORT : "3000"
 
+const path = require("path")
 // Require Middlewares
 const methodOverride = require("method-override")
 const morgan = require("morgan")
@@ -20,6 +21,8 @@ const isSignin = require("./middleware/is-sign-in")
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride("_method"))
 app.use(morgan("dev"))
+
+app.use(express.static(path.join(__dirname, "public")))
 
 // Session Configurations
 app.use(

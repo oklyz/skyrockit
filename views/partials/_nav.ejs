@@ -1,13 +1,21 @@
+<link rel="stylesheet" href="/stylesheets/partials.css" />
+
 <nav>
   <% if(user) { %>
-  <p>Welcome To the app. <%= user.username %></p>
-  <a href="/users/<%= user._id %>/application">Your Application</a>
-  <a href="/users/<%= user._id %>/application/new">Add an Application</a>
-  <a href="/auth/sign-out">Sign out</a>
+    <div class="navbar">
+      <h1 id="nav-header">Skyrockit</h1>
+      <div class="nav-links">
+        <a class="authlink" href="/users/<%=user._id%>/application">Your Apps</a>
+        <a class="authlink" href="/auth/sign-out">Sign Out</a>
+      </div>
+    </div>
   <% } else { %>
-  <p>Welcome To the app, guess</p>
-  <a href="/auth/sign-up">sign-up</a>
-  <a href="/auth/sign-in">sign-in</a>
-  <a href="/auth/sign-out">sign-out</a>
+    <div class="navbar">
+      <h1 id="nav-header">Skyrockit</h1>
+      <div class="nav-links">
+        <a class="authlink" href="/auth/sign-in">Sign In</a>
+        <a class="authlink" href="/auth/sign-up">Sign Up</a>
+      </div>
+    </div>
   <% } %>
 </nav>

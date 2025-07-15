@@ -1,14 +1,15 @@
+<link rel="stylesheet" href="/stylesheets/style.css" />
 <%- include("../partials/_nav") %>
+<div class="signin-container">
+  <h1>sign-in</h1>
+  <form action="/auth/sign-in" method="post">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" />
 
-<h1>sign-in</h1>
-
-<form action="/auth/sign-in" method="post">
-  <label for="username">Username:</label>
-  <input type="text" name="username" id="username" />
-
-  <br />
-  <label for="password">Password:</label>
-  <input type="password" name="password" id="password" />
-  <br />
-  <button type="submit">sign-in</button>
-</form>
+    <br />
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" />
+    <br />
+    <button type="submit">sign-in</button>
+  </form>
+</div>
