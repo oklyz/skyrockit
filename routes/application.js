@@ -11,6 +11,6 @@ router.get("/:applicationId", appCtrl.app_show_get)
 router.get("/:applicationId/edit", appCtrl.app_edit_get)
 router.put("/:applicationId", appCtrl.app_Update_put)
 
-router.delete("/applicationId", appCtrl.app_delete_delete)
+router.delete("/:applicationId", appCtrl.app_delete_delete)
 
 module.exports = router

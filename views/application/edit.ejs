@@ -1,5 +1,6 @@
 <%- include('../partials/_nav') %>
-<h1>Edit <%= application.title %></h1>
+<title>Editing <%= application.title %></title>
+<h1>Edit <%= application.title %> at <%= application.company %></h1>
 <form action="/users/<%= user._id %>/application/<%= application._id %>?_method=PUT" method="POST">
   <label for="company">Company</label>
   <input type="text" name="company" id="company" value="<%= application.company %>">
@@ -11,20 +12,25 @@
   <textarea name="notes" id="notes"></textarea>
   <br>
   <label for="postingLink">Posting Link</label>
-  <input type="text" name="postingLink" id="postingLink" value="<% if(application.notes) { %>
-    <%= application.notes %>
-  <% } else { %>
-    <%= %>
-  <% } %> 
-  ">
+  <input type="text" name="postingLink" id="postingLink" value="<%= application.postingLink %>">
   <br>
   <label for="status">Status</label>
   <select name="status" id="status">
-    <option value="interested">Interested</option>
-    <option value="applied">Applied</option>
-    <option value="interviewing">Interviewing</option>
-    <option value="rejected">Rejected</option>
-    <option value="accepted">Accepted</option>
+    <option value="interested">
+      <%= application.status === "interested" ? "selected" : "" %>
+      Interested</option>
+    <option value="applied">
+      <%= application.status === "applied" ? "selected" : "" %>
+      Applied</option>
+    <option value="interviewing">
+      <%= application.status === "interviewing" %>
+      Interviewing</option>
+    <option value="rejected">
+      <%= application.status === "rejected" %>
+      Rejected</option>
+    <option value="accepted">
+      <%= application.status === "accepted" %>
+      Accepted</option>
   </select>
   <br>
   <button type="submit">Update Application</button>

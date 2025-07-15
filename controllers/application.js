@@ -34,12 +34,23 @@ exports.app_edit_get = async (req, res) => {
 }
 
 exports.app_Update_put = async (req, res) => {
-  const currentUser = await User.findByIdAndUpdate(req.session.user._id)
-  currentUser.applications.push(req.body)
-  res.redirect(`/users/${currentUser._id}/application/${req.params.applicationId}`)
+  const currentUser = await User.findById(req.session.user._id)
+  const application = currentUser.applications.id(req.params.applicationId)
+  application.set(req.body)
+  await currentUser.save()
+
+  res.redirect(
+    `/users/${currentUser._id}/application/${req.params.applicationId}`
+  )
 }
 
 exports.app_delete_delete = async (req, res) => {
-  await User.findByIdAndDelete(req.session.user._id)
-  res.redirect(`/users/`)
+  await User.findById(req.session.user._id)
+  const currentUser = await User.findById(req.session.user._id)
+
+  currentUser.applications.id(req.params.applicationId).deleteOne()
+
+  await currentUser.save()
+
+  res.redirect(`/users/${currentUser._id}/application`)
 }
