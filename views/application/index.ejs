@@ -1,0 +1,11 @@
+<%- include("../partials/_nav") %>
+
+<h1>You application</h1>
+
+<ul>
+  <% applications.forEach(app => { %>
+    <a href="/users/<%= user._id %>/application/<%= app._id %>">
+    <li><%= app.title %> at <%= app.company %></li>
+    </a>
+  <% }) %>
+</ul>
